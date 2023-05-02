@@ -1,8 +1,9 @@
 """
-Add_Monster_v3
+Add_Monster_v5
 Allows the user to add a new monster card to the existing monster_dict
-Uses while loops to test if the values for strength, speed, etc. are within the allowed values
-Added try except loops to check for a value error, if so, the while loop is run again
+Changed the add_monster function to loop through one singular stat modifier four times, each time for a different stat
+Added try except loops to check for a value error, if so, the counter is decreased by one so the same stat
+will be asked for again until valid input
 """
 
 import easygui
@@ -82,25 +83,41 @@ def add_monster():
 
     while counter < 4:
         if counter == 0:
-            monster_stat = easygui.enterbox("Enter how strong the new monster is, (Max is 25)", "Strength of "
-                                                                                                "Monster")
-            monster_stat = int(monster_stat)
-            monster_dict["Strength"] = monster_stat
+            try:
+                monster_stat = easygui.enterbox("Enter how strong the new monster is, (Max is 25)", "Strength of "
+                                                                                                    "Monster")
+                monster_stat = int(monster_stat)
+                monster_dict["Strength"] = monster_stat
+            except ValueError:
+                easygui.msgbox("You did not enter a positive number between 1 and 25")
+                counter = counter - 1
         elif counter == 1:
-            monster_stat = easygui.enterbox("Enter how Speedy the new monster is, (Max is 25)", "Speed of "
-                                                                                                "Monster")
-            monster_stat = int(monster_stat)
-            monster_dict["Speed"] = monster_stat
+            try:
+                monster_stat = easygui.enterbox("Enter how speedy the new monster is, (Max is 25)", "Speed of "
+                                                                                                    "Monster")
+                monster_stat = int(monster_stat)
+                monster_dict["Speed"] = monster_stat
+            except ValueError:
+                easygui.msgbox("You did not enter a positive number between 1 and 25")
+                counter = counter - 1
         elif counter == 2:
-            monster_stat = easygui.enterbox("Enter how Stealthy the new monster is, (Max is 25)", "Stealth of "
-                                                                                                  "Monster")
-            monster_stat = int(monster_stat)
-            monster_dict["Stealth"] = monster_stat
+            try:
+                monster_stat = easygui.enterbox("Enter how stealthy the new monster is, (Max is 25)", "Stealth of "
+                                                                                                      "Monster")
+                monster_stat = int(monster_stat)
+                monster_dict["Stealth"] = monster_stat
+            except ValueError:
+                easygui.msgbox("You did not enter a positive number between 1 and 25")
+                counter = counter - 1
         elif counter == 3:
-            monster_stat = easygui.enterbox("Enter how Cunning the new monster is, (Max is 25)", "Cunning of "
-                                                                                                 "Monster")
-            monster_stat = int(monster_stat)
-            monster_dict["Cunning"] = monster_stat
+            try:
+                monster_stat = easygui.enterbox("Enter how Cunning the new monster is, (Max is 25)", "Cunning of "
+                                                                                                     "Monster")
+                monster_stat = int(monster_stat)
+                monster_dict["Cunning"] = monster_stat
+            except ValueError:
+                easygui.msgbox("You did not enter a positive number between 1 and 25")
+                counter = counter - 1
         counter = counter + 1
 
 
