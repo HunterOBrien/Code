@@ -95,7 +95,7 @@ def delete_monster():
     # Deletes monster selected by user
     monster_to_delete = delete_option[0]
     del monster_dict[monster_to_delete]
-    easygui.msgbox(f"the monster {monster_to_delete} was deleted")
+    easygui.msgbox(f"The monster {monster_to_delete} was deleted")
 
 
 delete_monster()
