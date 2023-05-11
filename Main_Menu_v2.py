@@ -22,6 +22,9 @@ def main_menu():
         pass
     elif monster_choices == "Print Monsters":
         pass
+    else:
+        easygui.msgbox("sorry please enter a valid input", "Error")
+        main_menu()
 
 
 main_menu()

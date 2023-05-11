@@ -3,8 +3,6 @@ Monster_Dict_v1
 Existing monster cards put into nested dictionary
 """
 
-import easygui
-
 # Nested dictionary containing all the existing monster cards
 monster_dict = {
                     'Stoneling': {
