@@ -1,9 +1,9 @@
 """
-Change_Monster_v1
+Change_Monster_v3
 Allows the user to modify an existing monster
 Sends user back to main menu if no monster is selected
+fixes the criteria of stats being between 1 and 25 to work properly
 """
-
 import easygui
 
 # Nested dictionary containing all the existing monster cards
@@ -95,8 +95,8 @@ def change_monster():
     monster_list = []
     for i in monster_dict:
         monster_list.append(i)
+
     monster_to_edit = easygui.choicebox("What monster would you like to edit", "Monster To Edit", monster_list)
-    counter = 0
 
     # If user does not select a monster, They are sent to main menu
     if monster_to_edit is None:
@@ -106,37 +106,30 @@ def change_monster():
     else:
         del monster_dict[monster_to_edit]
         new_name = easygui.enterbox("What is the new name of the monster?", "Name of Monster")
+        strength = easygui.enterbox("What is the strength of the monster, (1 to 25)", "Strength of Monster")
+        strength = int(strength)
+        while strength > 25 or strength < 1:
+            easygui.msgbox("Please enter a valid number between 1 and 25")
+            strength = easygui.enterbox("What is the strength of the monster, (1 to 25)", "Strength of Monster")
 
-        while counter < 4:
-            if counter == 0:
-                try:
-                    strength = easygui.enterbox("What is the strength of the monster, (1 to 25)", "Strength of Monster")
-                except ValueError:
-                    easygui.msgbox("Please enter a valid number between 1 and 25")
-                    counter = counter - 1
+        speed = easygui.enterbox("What is the speed of the monster, (1 to 25)", "Speed of Monster")
+        speed = int(speed)
+        while speed > 25 or speed < 1:
+            easygui.msgbox("Please enter a valid number between 1 and 25")
+            speed = easygui.enterbox("What is the speed of the monster, (1 to 25)", "Speed of Monster")
 
-            elif counter == 1:
-                try:
-                    speed = easygui.enterbox("What is the speed of the monster, (1 to 25)", "Speed of Monster")
-                except ValueError:
-                    easygui.msgbox("Please enter a valid number between 1 and 25")
-                    counter = counter - 1
+        stealth = easygui.enterbox("What is the stealth of the monster, (1 to 25)", "Stealth of Monster")
+        stealth = int(stealth)
+        while stealth > 25 or speed < 1:
+            easygui.msgbox("Please enter a valid number between 1 and 25")
+            stealth = easygui.enterbox("What is the stealth of the monster, (1 to 25)", "Stealth of Monster")
 
-            elif counter == 2:
-                try:
-                    stealth = easygui.enterbox("What is the stealth of the monster, (1 to 25)", "Stealth of Monster")
-                except ValueError:
-                    easygui.msgbox("Please enter a valid number between 1 and 25")
-                    counter = counter - 1
+        cunning = easygui.enterbox("What is the cunning of the monster, (1 to 25)", "Cunning of Monster")
+        cunning = int(cunning)
+        while cunning > 25 or cunning < 1:
+            easygui.msgbox("Please enter a valid number between 1 and 25")
+            stealth = easygui.enterbox("What is the cunning of the monster, (1 to 25)", "Cunning of Monster")
 
-            elif counter == 3:
-                try:
-                    cunning = easygui.enterbox("What is the cunning of the monster, (1 to 25)", "Cunning of Monster")
-                except ValueError:
-                    easygui.msgbox("Please enter a valid number between 1 and 25")
-                    counter = counter - 1
-
-            counter = counter + 1
         # Adds new monster with stats to the monster dictionary
         monster_dict[new_name] = {"Strength": strength, "Speed": speed, "Stealth": stealth, "Cunning": cunning}
 
