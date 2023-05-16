@@ -4,6 +4,7 @@ Allows the user to modify an existing monster
 Sends user back to main menu if no monster is selected
 fixes the criteria of stats being between 1 and 25 to work properly
 adds additional error checking that the user enters an integer for the monsters stats
+Made the code more efficient by using  while loop four times instead of four different sets of questions
 """
 import easygui
 
@@ -92,7 +93,10 @@ def main_menu():
 
 
 def change_monster():
-    pass_stat = 0
+    looper = 0
+    stats = ["strength", "speed", "stealth", "cunning"]
+    stat_values = []
+
     # Creates list to add options for the monster to select changes in easygui
     monster_list = []
     for i in monster_dict:
@@ -100,17 +104,22 @@ def change_monster():
 
     new_name = easygui.enterbox("What is the new name of your monster?", "Monster Name")
 
+    while looper != 4:
+        try:
+            stored_value = easygui.enterbox(f"What is the {stats[looper]} of the monster, (1 to 25)", "Testing 1")
+            stored_value = int(stored_value)
+            stat_values.append(stored_value)
+            while stored_value > 25 or stored_value < 1:
+                easygui.msgbox("Please enter a valid number between 1 and 25")
+                stored_value = easygui.enterbox("What is the strength of the monster, (1 to 25)", "Testing")
+                stored_value = int(stored_value)
+            looper = looper + 1
+        except ValueError:
+            easygui.msgbox("Please enter a valid number!")
 
-    for stat in stats:
-
-    while pass_stat != 4:
-
-
-
-     # if pass_stat == 4:
-        # Adds new monster with stats to the monster dictionary
-        # monster_dict[new_name] = {"Strength": strength, "Speed": speed, "Stealth": stealth, "Cunning": cunning}
-        print(monster_dict)
+    monster_dict[new_name] = {"Strength": stat_values[0], "Speed": stat_values[1], "Stealth": stat_values[2],
+                              "Cunning": stat_values[3]}
+    print(monster_dict)
 
 
 def change_monster_helper():
