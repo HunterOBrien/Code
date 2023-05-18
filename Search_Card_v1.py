@@ -71,9 +71,13 @@ monster_dict = {
 
 
 def search_card():
-    search = easygui.enterbox("What is the name of the card you are looking for?", "Name of Card").lower().capitalize()
+    # Makes sure the user can find the card regardless of whatever capitalisation they have done
+    search = easygui.enterbox("What is the name of the card you are looking for?", "Name of Card⡰").lower().capitalize()
+
+    # Checks if card in dictionary
     if search in monster_dict:
         easygui.msgbox(f"The monster {search} is in the monster's dictionary!", "Search Results")
+    # Else says the card cannot be found
     else:
         easygui.msgbox(f"Sorry, could not find the monster ({search}), that you were looking for", "Search Results")
 
