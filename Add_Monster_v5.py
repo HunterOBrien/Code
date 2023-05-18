@@ -88,6 +88,10 @@ def add_monster():
                                                                                                     "Monster")
                 monster_stat = int(monster_stat)
                 monster_dict["Strength"] = monster_stat
+                while monster_stat > 25 or monster_stat < 1:
+                    easygui.msgbox("Please enter a valid number between 1 and 25")
+                    monster_stat = easygui.enterbox("What is the strength of the monster, (1 to 25)", "Testing")
+                    monster_stat = int(monster_stat)
             except ValueError:
                 easygui.msgbox("You did not enter a positive number between 1 and 25")
                 counter = counter - 1
@@ -97,6 +101,10 @@ def add_monster():
                                                                                                     "Monster")
                 monster_stat = int(monster_stat)
                 monster_dict["Speed"] = monster_stat
+                while monster_stat > 25 or monster_stat < 1:
+                    easygui.msgbox("Please enter a valid number between 1 and 25")
+                    monster_stat = easygui.enterbox("What is the strength of the monster, (1 to 25)", "Testing")
+                    monster_stat = int(monster_stat)
             except ValueError:
                 easygui.msgbox("You did not enter a positive number between 1 and 25")
                 counter = counter - 1
@@ -106,6 +114,10 @@ def add_monster():
                                                                                                       "Monster")
                 monster_stat = int(monster_stat)
                 monster_dict["Stealth"] = monster_stat
+                while monster_stat > 25 or monster_stat < 1:
+                    easygui.msgbox("Please enter a valid number between 1 and 25")
+                    monster_stat = easygui.enterbox("What is the strength of the monster, (1 to 25)", "Testing")
+                    monster_stat = int(monster_stat)
             except ValueError:
                 easygui.msgbox("You did not enter a positive number between 1 and 25")
                 counter = counter - 1
@@ -115,6 +127,10 @@ def add_monster():
                                                                                                      "Monster")
                 monster_stat = int(monster_stat)
                 monster_dict["Cunning"] = monster_stat
+                while monster_stat > 25 or monster_stat < 1:
+                    easygui.msgbox("Please enter a valid number between 1 and 25")
+                    monster_stat = easygui.enterbox("What is the strength of the monster, (1 to 25)", "Testing")
+                    monster_stat = int(monster_stat)
             except ValueError:
                 easygui.msgbox("You did not enter a positive number between 1 and 25")
                 counter = counter - 1

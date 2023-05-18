@@ -101,7 +101,7 @@ def delete_monster():
     else:
         for monster_to_delete in delete_option:
             del monster_dict[monster_to_delete]
-        easygui.msgbox(f"Monster {monster_to_delete} was successfully deleted", "Monster Deleter")
+        easygui.msgbox(f"Monster/s was successfully deleted", "Monster Deleter")
     print(monster_dict)
     main_menu()
 
