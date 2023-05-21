@@ -1,10 +1,8 @@
 """
-Change_Monster_v5
-Allows the user to modify an existing monster
-Sends user back to main menu if no monster is selected
-fixes the criteria of stats being between 1 and 25 to work properly
-adds additional error checking that the user enters an integer for the monsters stats
-Made the code more efficient by using  while loop four times instead of four different sets of questions
+Search_Card_v3
+allows user to search to see if a card exists
+checks if monsters details are correct
+allows user to change details if incorrect by adding change monsters function
 """
 import easygui
 
@@ -74,24 +72,6 @@ monster_dict = {
 }
 
 
-def main_menu():
-    easygui.msgbox("Welcome to Monster Card Catalogue!")
-    monster_choices = easygui.buttonbox("Please pick what you want to do with the monster cards", "Main Menu",
-                                        choices=("Add Monster", "Change Monster", "Search For Card",
-                                                 "Delete Monster", "Print Monsters"))
-
-    if monster_choices == "Add Monster":
-        pass
-    elif monster_choices == "Change Monster":
-        pass
-    elif monster_choices == "Search For Card":
-        pass
-    elif monster_choices == "Delete Monster":
-        pass
-    elif monster_choices == "Print Monsters":
-        pass
-
-
 def change_monster():
     looper = 0
     stats = ["strength", "speed", "stealth", "cunning"]
@@ -113,7 +93,6 @@ def change_monster():
                 stored_value = easygui.enterbox(f"What is the {stats[looper]} of the monster, (1 to 25)", "Testing")
                 stored_value = int(stored_value)
             stat_values.append(stored_value)
-
             looper = looper + 1
         except ValueError:
             easygui.msgbox("Please enter a valid number!")
@@ -123,23 +102,25 @@ def change_monster():
     print(monster_dict)
 
 
-def change_monster_helper():
-    pass_stat = 0
-    # Creates list to add options for the monster to select changes in easygui
-    monster_list = []
-    for i in monster_dict:
-        monster_list.append(i)
+def search_card():
+    # Makes sure the user can find the card regardless of whatever capitalisation they have done
+    search = easygui.enterbox("What is the name of the card you are looking for?", "Name of Card⡰").lower().capitalize()
 
-    monster_to_edit = easygui.choicebox("What monster would you like to edit", "Monster To Edit", monster_list)
+    # Checks if card in dictionary
+    if search in monster_dict:
+        easygui.msgbox(f"The monster {search} is in the monster's dictionary!", "Search Results")
+        easygui.msgbox(f"{search}: {monster_dict[search]}")
+        edit_searched_monster = easygui.buttonbox("Would you like to edit its stats", choices=("Yes", "No"))
+        # If user wants to edit, deletes old monster and allows user to pick all the stats they want
+        if edit_searched_monster == "Yes":
+            del monster_dict[search]
+            change_monster()
+        else:
+            pass
 
-    # If user does not select a monster, They are sent to main menu
-    if monster_to_edit is None:
-        main_menu()
-
-    # Otherwise, the previous monster selected is deleted, new name of monster is asked, as well as new stats
+    # Else says the card cannot be found
     else:
-        del monster_dict[monster_to_edit]
-    change_monster()
+        easygui.msgbox(f"Sorry, could not find the monster ({search}), that you were looking for", "Search Results")
 
 
-change_monster_helper()
+search_card()
