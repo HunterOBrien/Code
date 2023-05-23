@@ -1,6 +1,7 @@
 """
 Final_v2
 Final version with added comments
+error fixes and changes to v1
 """
 import easygui
 
@@ -70,12 +71,13 @@ monster_dict = {
 }
 
 
+# Main Menu for user
 def main_menu():
     # Welcome screen
     easygui.msgbox("Welcome to Monster Card Catalogue!")
     monster_choices = easygui.buttonbox("Please pick what you want to do with the monster cards", "Main Menu",
                                         choices=("Add Monster", "Change Monster", "Search For Card",
-                                                 "Delete Monster", "Print Monsters"))
+                                                 "Delete Monster", "Print Monsters", "End Program"))
 
     # Gives user a choice what function they want to do
     if monster_choices == "Add Monster":
@@ -88,11 +90,11 @@ def main_menu():
         delete_monster()
     elif monster_choices == "Print Monsters":
         print_monsters()
-    else:
-        easygui.msgbox("sorry please enter a valid input", "Error")
-        main_menu()
+    elif monster_choices == "End Program":
+        quit()
 
 
+# adds monster to existing monster dict
 def add_monster():
     # Gets monster name from user, adds to dict
     new_monster = easygui.enterbox("Enter the name of the new monster", "Monster Name")
@@ -160,8 +162,10 @@ def add_monster():
                 easygui.msgbox("You did not enter a positive number between 1 and 25")
                 counter = counter - 1
         counter = counter + 1
+    main_menu()
 
 
+# deletes a monster from existing monster dict
 def delete_monster():
     monster_list = []
     for i in monster_dict:
@@ -179,6 +183,7 @@ def delete_monster():
     main_menu()
 
 
+# edit a monster's stats
 def change_monster():
     looper = 0
     # uses index values of this list to work out what stat is being changed
@@ -211,9 +216,10 @@ def change_monster():
 
     monster_dict[new_name] = {"Strength": stat_values[0], "Speed": stat_values[1], "Stealth": stat_values[2],
                               "Cunning": stat_values[3]}
-    print(monster_dict)
+    main_menu()
 
 
+# helps the change monster function
 def change_monster_helper():
     pass_stat = 0
     # Creates list to add options for the monster to select changes in easygui
@@ -234,6 +240,7 @@ def change_monster_helper():
     change_monster()
 
 
+# allows the user to see if a card exists in the monster dictionary
 def search_card():
     # Makes sure the user can find the card regardless of whatever capitalisation they have done
     search = easygui.enterbox("What is the name of the card you are looking for?", "Name of Card⡰").lower().capitalize()
@@ -248,13 +255,15 @@ def search_card():
             del monster_dict[search]
             change_monster()
         else:
-            pass
+            main_menu()
 
     # Else says the card cannot be found
     else:
         easygui.msgbox(f"Sorry, could not find the monster ({search}), that you were looking for", "Search Results")
+        main_menu()
 
 
+# prints the monsters dictionary
 def print_monsters():
     # empty variable to store information
     monster_info_text = ""
@@ -267,6 +276,7 @@ def print_monsters():
 
     # prints out the variable with all the information stored into an easyGUI.msgbox
     easygui.msgbox(msg=monster_info_text, title="Print Monsters")
+    main_menu()
 
 
 # Starts the program by calling the main menu function
