@@ -111,7 +111,8 @@ def add_monster():
                 monster_dict["Strength"] = monster_stat
                 while monster_stat > 25 or monster_stat < 1:
                     easygui.msgbox("Please enter a valid number between 1 and 25")
-                    monster_stat = easygui.enterbox("What is the strength of the monster, (1 to 25)", "Testing")
+                    monster_stat = easygui.enterbox("What is the strength of the monster, (1 to 25)",
+                                                    "Monster Strength")
                     monster_stat = int(monster_stat)
             except ValueError:
                 easygui.msgbox("You did not enter a positive number between 1 and 25")
@@ -124,20 +125,22 @@ def add_monster():
                 monster_dict["Speed"] = monster_stat
                 while monster_stat > 25 or monster_stat < 1:
                     easygui.msgbox("Please enter a valid number between 1 and 25")
-                    monster_stat = easygui.enterbox("What is the strength of the monster, (1 to 25)", "Testing")
+                    monster_stat = easygui.enterbox("What is the Speed of the monster, (1 to 25)", "Speed of "
+                                                                                                   "monster")
                     monster_stat = int(monster_stat)
             except ValueError:
                 easygui.msgbox("You did not enter a positive number between 1 and 25")
                 counter = counter - 1
         elif counter == 2:
             try:
-                monster_stat = easygui.enterbox("Enter how stealthy the new monster is, (Max is 25)", "Stealth of "
+                monster_stat = easygui.enterbox("Enter how Stealthy the new monster is, (Max is 25)", "Stealth of "
                                                                                                       "Monster")
                 monster_stat = int(monster_stat)
                 monster_dict["Stealth"] = monster_stat
                 while monster_stat > 25 or monster_stat < 1:
                     easygui.msgbox("Please enter a valid number between 1 and 25")
-                    monster_stat = easygui.enterbox("What is the strength of the monster, (1 to 25)", "Testing")
+                    monster_stat = easygui.enterbox("What is the Stealth of the monster, (1 to 25)", "Stealth of "
+                                                                                                     "monster")
                     monster_stat = int(monster_stat)
             except ValueError:
                 easygui.msgbox("You did not enter a positive number between 1 and 25")
@@ -150,7 +153,8 @@ def add_monster():
                 monster_dict["Cunning"] = monster_stat
                 while monster_stat > 25 or monster_stat < 1:
                     easygui.msgbox("Please enter a valid number between 1 and 25")
-                    monster_stat = easygui.enterbox("What is the strength of the monster, (1 to 25)", "Testing")
+                    monster_stat = easygui.enterbox("What is the cunning of the monster, (1 to 25)", "Cunning of "
+                                                                                                     "monster")
                     monster_stat = int(monster_stat)
             except ValueError:
                 easygui.msgbox("You did not enter a positive number between 1 and 25")
@@ -193,11 +197,11 @@ def change_monster():
     # additional error checking with try, except loops that the user actually enters a number so program does not crash
     while looper != 4:
         try:
-            stored_value = easygui.enterbox(f"What is the {stats[looper]} of the monster, (1 to 25)", "Testing 1")
+            stored_value = easygui.enterbox(f"What is the {stats[looper]} of the monster, (1 to 25)", "Monster Stat")
             stored_value = int(stored_value)
             while stored_value > 25 or stored_value < 1:
                 easygui.msgbox("Please enter a valid number between 1 and 25")
-                stored_value = easygui.enterbox(f"What is the {stats[looper]} of the monster, (1 to 25)", "Testing")
+                stored_value = easygui.enterbox(f"What is the {stats[looper]} of the monster, (1 to 25)", "Monster Stat")
                 stored_value = int(stored_value)
             stat_values.append(stored_value)
 
