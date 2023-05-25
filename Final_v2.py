@@ -99,7 +99,6 @@ def add_monster():
     # Gets monster name from user, adds to dict
     new_monster = easygui.enterbox("Enter the name of the new monster", "Monster Name")
     monster_dict[new_monster] = {}
-    monster_stat = 0
     counter = 0
 
     # Loops through counter 4 times for each different stat, error checking that the value is between 1 and 25
@@ -206,7 +205,8 @@ def change_monster():
             stored_value = int(stored_value)
             while stored_value > 25 or stored_value < 1:
                 easygui.msgbox("Please enter a valid number between 1 and 25")
-                stored_value = easygui.enterbox(f"What is the {stats[looper]} of the monster, (1 to 25)", "Monster Stat")
+                stored_value = easygui.enterbox(f"What is the {stats[looper]} of the monster, (1 to 25)",
+                                                "Monster Stat")
                 stored_value = int(stored_value)
             stat_values.append(stored_value)
 
@@ -221,7 +221,6 @@ def change_monster():
 
 # helps the change monster function
 def change_monster_helper():
-    pass_stat = 0
     # Creates list to add options for the monster to select changes in easygui
     monster_list = []
     for i in monster_dict:
@@ -272,7 +271,7 @@ def print_monsters():
         # adds monster name to variable, as well as key value with good formatting
         monster_info_text = monster_info_text + f"Monster Name: {monster_ID}\n"
         monster_info_text = monster_info_text + '\n'.join([f"{key}: {value}" for key, value in monster_info.items()])
-        monster_info_text = monster_info_text + "\n\n"
+        monster_info_text = monster_info_text + "\n"
 
     # prints out the variable with all the information stored into an easyGUI.msgbox
     easygui.msgbox(msg=monster_info_text, title="Print Monsters")
