@@ -156,7 +156,6 @@ def change_monster():
 
 
 def change_monster_helper():
-    pass_stat = 0
     # Creates list to add options for the monster to select changes in easygui
     monster_list = []
     for i in monster_dict:

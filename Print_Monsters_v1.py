@@ -2,7 +2,6 @@
 Print_Monsters_v1
 formats dictionaries and prints the formatted version
 """
-import easygui
 
 # Nested dictionary containing all the existing monster cards
 monster_dict = {

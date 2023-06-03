@@ -205,8 +205,8 @@ def change_monster():
             stored_value = int(stored_value)
             while stored_value > 25 or stored_value < 1:
                 easygui.msgbox("Please enter a valid number between 1 and 25")
-                stored_value = easygui.enterbox(f"What is the {stats[looper]} of the monster, (1 to 25)",
-                                                "Monster Stat")
+                stored_value = easygui.enterbox(f"What is the {stats[looper]} of the monster,"
+                                                f"(1 to 25)", "Monster Stat")
                 stored_value = int(stored_value)
             stat_values.append(stored_value)
 
@@ -264,17 +264,13 @@ def search_card():
 
 # prints the monsters dictionary
 def print_monsters():
-    # empty variable to store information
-    monster_info_text = ""
-    # loops through monster dictionary
+    # Runs a for loop that prints the monsters to the python console
     for monster_ID, monster_info in monster_dict.items():
-        # adds monster name to variable, as well as key value with good formatting
-        monster_info_text = monster_info_text + f"Monster Name: {monster_ID}\n"
-        monster_info_text = monster_info_text + '\n'.join([f"{key}: {value}" for key, value in monster_info.items()])
-        monster_info_text = monster_info_text + "\n"
+        print(f"\nMonster Name: {monster_ID}")
 
-    # prints out the variable with all the information stored into an easyGUI.msgbox
-    easygui.msgbox(msg=monster_info_text, title="Print Monsters")
+        for key in monster_info:
+            print(f"{key}: {monster_info[key]}")
+
     main_menu()
 
 
