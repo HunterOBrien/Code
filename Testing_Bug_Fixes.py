@@ -107,13 +107,12 @@ def add_monster():
     # additional error checking with try, except loops that the user actually enters a number so program does not crash
     while looper != 4:
         try:
-            stored_value = easygui.enterbox(f"What is the {stats[looper]} of the monster, (1 to 25)",
-                                            "Monster Stat")
+            stored_value = easygui.enterbox(f"What is the {stats[looper]} of the monster, (1 to 25)", "Monster Stat")
             stored_value = int(stored_value)
             while stored_value > 25 or stored_value < 1:
                 easygui.msgbox("Please enter a valid number between 1 and 25")
                 stored_value = easygui.enterbox(f"What is the {stats[looper]} of the monster,"
-                                                    f"(1 to 25)", "Monster Stat")
+                                                f"(1 to 25)", "Monster Stat")
                 stored_value = int(stored_value)
             stat_values.append(stored_value)
 
